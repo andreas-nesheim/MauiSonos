@@ -1,24 +1,27 @@
-﻿namespace MauiSonos;
+﻿using ByteDev.Sonos;
+
+namespace MauiSonos;
 
 public partial class MainPage : ContentPage
 {
-	int count = 0;
+    public MainPage()
+    {
+        InitializeComponent();
+    }
 
-	public MainPage()
-	{
-		InitializeComponent();
-	}
+    private async void OnCounterClicked(object sender, EventArgs e)
+    {
+        // Sonos Play:1
+        var controller = new SonosControllerFactory().Create("192.168.86.172");
+        var isPlaying = await controller.GetIsPlayingAsync();
+        var volume = await controller.GetVolumeAsync();
+        var queue = await controller.GetQueueAsync();
 
-	private void OnCounterClicked(object sender, EventArgs e)
-	{
-		count++;
-
-		if (count == 1)
-			CounterBtn.Text = $"Clicked {count} time";
-		else
-			CounterBtn.Text = $"Clicked {count} times";
-
-		SemanticScreenReader.Announce(CounterBtn.Text);
-	}
+        // Sonos Beam
+        controller = new SonosControllerFactory().Create("192.168.86.38");
+        isPlaying = await controller.GetIsPlayingAsync();
+        volume = await controller.GetVolumeAsync();
+        queue = await controller.GetQueueAsync();
+    }
 }
 
