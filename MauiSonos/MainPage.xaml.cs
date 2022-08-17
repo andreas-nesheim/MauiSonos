@@ -5,7 +5,7 @@ namespace MauiSonos;
 public partial class MainPage : ContentPage
 {
     private readonly string sonosPlay1IP = "192.168.86.172";
-    private readonly string sonosBeamIP = "192.168.86.172";
+    private readonly string sonosBeamIP = "192.168.86.38";
     private SonosController sonosPlay1Controller;
     private SonosController sonosBeamController;
 
