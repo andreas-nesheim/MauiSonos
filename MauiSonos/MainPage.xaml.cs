@@ -32,7 +32,7 @@ public partial class MainPage : ContentPage
 
     private async void OnNextBtnClicked(object sender, EventArgs e)
     {
-        await sonosPlay1Controller.PreviousTrackAsync();
+        await sonosPlay1Controller.NextTrackAsync();
     }
 }
 

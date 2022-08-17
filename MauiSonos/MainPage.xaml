@@ -20,7 +20,7 @@
                 FontSize="32"
                 HorizontalOptions="Center"
                 SemanticProperties.HeadingLevel="Level1"
-                Text="Hello, World!" />
+                Text="Hello, Sonos!" />
 
             <Label
                 FontSize="18"
@@ -30,9 +30,27 @@
                 Text="Welcome to .NET Multi-platform App UI" />
 
             <HorizontalStackLayout HorizontalOptions="Center">
-                <Button Clicked="OnPrevBtnClicked" Text="◀️" />
-                <Button Clicked="OnPlayPauseBtnClicked" Text="⏯️" />
-                <Button Clicked="OnNextBtnClicked" Text="▶️" />
+                <Button
+                    Clicked="OnPrevBtnClicked"
+                    CornerRadius="30"
+                    FontSize="20"
+                    HeightRequest="60"
+                    Text="◀️"
+                    WidthRequest="60" />
+                <Button
+                    Clicked="OnPlayPauseBtnClicked"
+                    CornerRadius="40"
+                    FontSize="30"
+                    HeightRequest="80"
+                    Text="⏯️"
+                    WidthRequest="80" />
+                <Button
+                    Clicked="OnNextBtnClicked"
+                    CornerRadius="30"
+                    FontSize="20"
+                    HeightRequest="60"
+                    Text="▶️"
+                    WidthRequest="60" />
             </HorizontalStackLayout>
 
         </VerticalStackLayout>
