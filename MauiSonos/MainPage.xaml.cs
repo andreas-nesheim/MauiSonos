@@ -4,15 +4,13 @@ namespace MauiSonos;
 
 public partial class MainPage : ContentPage
 {
-    private readonly string sonosPlay1IP = "192.168.86.172";
-    private readonly string sonosBeamIP = "192.168.86.38";
+    private readonly string sonosSpeakerIP = "192.168.86.172";
     private SonosController sonosController;
 
     public MainPage()
     {
         InitializeComponent();
-        sonosController = new SonosControllerFactory().Create(sonosPlay1IP);
-        //sonosController = new SonosControllerFactory().Create(sonosBeamIP);
+        sonosController = new SonosControllerFactory().Create(sonosSpeakerIP);
     }
 
     private async void OnPrevBtnClicked(object sender, EventArgs e)
