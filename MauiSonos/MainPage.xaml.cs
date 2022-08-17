@@ -6,33 +6,32 @@ public partial class MainPage : ContentPage
 {
     private readonly string sonosPlay1IP = "192.168.86.172";
     private readonly string sonosBeamIP = "192.168.86.38";
-    private SonosController sonosPlay1Controller;
-    private SonosController sonosBeamController;
+    private SonosController sonosController;
 
     public MainPage()
     {
         InitializeComponent();
-        sonosPlay1Controller = new SonosControllerFactory().Create(sonosPlay1IP);
-        sonosBeamController = new SonosControllerFactory().Create(sonosBeamIP);
+        sonosController = new SonosControllerFactory().Create(sonosPlay1IP);
+        //sonosController = new SonosControllerFactory().Create(sonosBeamIP);
     }
 
     private async void OnPrevBtnClicked(object sender, EventArgs e)
     {
-        await sonosPlay1Controller.PreviousTrackAsync();
+        await sonosController.PreviousTrackAsync();
     }
 
     private async void OnPlayPauseBtnClicked(object sender, EventArgs e)
     {
-        var isPlaying = await sonosPlay1Controller.GetIsPlayingAsync();
+        var isPlaying = await sonosController.GetIsPlayingAsync();
         if (isPlaying)
-            await sonosPlay1Controller.PauseAsync();
+            await sonosController.PauseAsync();
         else
-            await sonosPlay1Controller.PlayAsync();
+            await sonosController.PlayAsync();
     }
 
     private async void OnNextBtnClicked(object sender, EventArgs e)
     {
-        await sonosPlay1Controller.NextTrackAsync();
+        await sonosController.NextTrackAsync();
     }
 }
 
