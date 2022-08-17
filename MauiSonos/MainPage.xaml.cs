@@ -4,24 +4,35 @@ namespace MauiSonos;
 
 public partial class MainPage : ContentPage
 {
+    private readonly string sonosPlay1IP = "192.168.86.172";
+    private readonly string sonosBeamIP = "192.168.86.172";
+    private SonosController sonosPlay1Controller;
+    private SonosController sonosBeamController;
+
     public MainPage()
     {
         InitializeComponent();
+        sonosPlay1Controller = new SonosControllerFactory().Create(sonosPlay1IP);
+        sonosBeamController = new SonosControllerFactory().Create(sonosBeamIP);
     }
 
-    private async void OnCounterClicked(object sender, EventArgs e)
+    private async void OnPrevBtnClicked(object sender, EventArgs e)
     {
-        // Sonos Play:1
-        var controller = new SonosControllerFactory().Create("192.168.86.172");
-        var isPlaying = await controller.GetIsPlayingAsync();
-        var volume = await controller.GetVolumeAsync();
-        var queue = await controller.GetQueueAsync();
+        await sonosPlay1Controller.PreviousTrackAsync();
+    }
 
-        // Sonos Beam
-        controller = new SonosControllerFactory().Create("192.168.86.38");
-        isPlaying = await controller.GetIsPlayingAsync();
-        volume = await controller.GetVolumeAsync();
-        queue = await controller.GetQueueAsync();
+    private async void OnPlayPauseBtnClicked(object sender, EventArgs e)
+    {
+        var isPlaying = await sonosPlay1Controller.GetIsPlayingAsync();
+        if (isPlaying)
+            await sonosPlay1Controller.PauseAsync();
+        else
+            await sonosPlay1Controller.PlayAsync();
+    }
+
+    private async void OnNextBtnClicked(object sender, EventArgs e)
+    {
+        await sonosPlay1Controller.PreviousTrackAsync();
     }
 }
 
